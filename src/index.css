@@ -1,0 +1,131 @@
+/* ============================================================
+   GLOBAL.CSS — Design tokens, resets, typography, scrollbar
+   ============================================================ */
+
+/* Google Fonts + Fontshare */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,800,900&display=swap');
+
+/* ─── CSS Variables ─── */
+:root {
+  /* Colors */
+  --bg: #050505;
+  --surface: #111111;
+  --surface-2: #161616;
+  --border: #1e1e1e;
+  --border-2: #2a2a2a;
+
+  /* Text */
+  --text-primary: #f0f0f0;
+  --text-secondary: #888888;
+  --text-muted: #555555;
+
+  /* Accents */
+  --indigo: #4F46E5;
+  --emerald: #22C55E;
+  --rose: #E11D48;
+  --amber: #F59E0B;
+  --violet: #8B5CF6;
+
+  /* Typography */
+  --font-display: 'Satoshi', -apple-system, sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Spacing */
+  --radius: 16px;
+  --radius-sm: 8px;
+  --radius-lg: 24px;
+}
+
+/* ─── Reset ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4F46E5;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #2a2a2a #0a0a0a;
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: rgba(79, 70, 229, 0.3);
+  color: #fff;
+}
+
+/* ─── Focus visible ─── */
+:focus-visible {
+  outline: 2px solid var(--indigo);
+  outline-offset: 2px;
+}
+
+/* ─── Anchors ─── */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ─── Images ─── */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ─── Section dividers ─── */
+.section-divider {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+/* ─── Glassmorphism utility ─── */
+.glass {
+  background: rgba(17, 17, 17, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ─── No cursor for body (custom cursor handles it) ─── */
+*, a, button, input, textarea, label {
+  cursor: none !important;
+}

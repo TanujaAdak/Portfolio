@@ -1,0 +1,11 @@
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #4F46E5, #22C55E, #E11D48);
+  transform-origin: 0%;
+  z-index: 9997;
+  box-shadow: 0 0 12px #4F46E5, 0 0 20px rgba(79, 70, 229, 0.4);
+}

@@ -1,0 +1,77 @@
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 1px;
+  pointer-events: none;
+}
+
+.gridCell {
+  border: 1px solid #1e1e1e;
+  border-radius: 4px;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.logoWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logoText {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 5rem;
+  font-weight: 900;
+  letter-spacing: -4px;
+  background: linear-gradient(135deg, #fff 30%, #4F46E5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.logoTagline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #555;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.barTrack {
+  width: 200px;
+  height: 2px;
+  background: #1e1e1e;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #4F46E5, #22C55E);
+  border-radius: 2px;
+  transform-origin: left;
+}
