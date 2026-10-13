@@ -6,11 +6,8 @@ import { useScrollDirection } from "../../hooks/useScrollDirection";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
-  const { scrollDirection, scrollY } = useScrollDirection();
+  const { isScrolled, isHidden } = useScrollDirection();
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  const isHidden = scrollDirection === "down" && scrollY > 80;
-  const isScrolled = scrollY > 20;
 
   const scrollTo = (href) => {
     const el = document.querySelector(href);

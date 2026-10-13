@@ -1,25 +1,40 @@
 import { useState, useEffect } from "react";
 
 export function useScrollDirection() {
-  const [scrollDirection, setScrollDirection] = useState("up");
-  const [scrollY, setScrollY] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
+    let ticking = false;
 
-    const updateScrollDirection = () => {
+    const updateScroll = () => {
       const currentScrollY = window.scrollY;
-      setScrollY(currentScrollY);
 
-      if (Math.abs(currentScrollY - lastScrollY) < 5) return;
+      const nextScrolled = currentScrollY > 20;
+      setIsScrolled((prev) => (prev !== nextScrolled ? nextScrolled : prev));
 
-      setScrollDirection(currentScrollY > lastScrollY ? "down" : "up");
-      lastScrollY = currentScrollY > 0 ? currentScrollY : 0;
+      const delta = currentScrollY - lastScrollY;
+      if (Math.abs(delta) > 10) {
+        const nextHidden = delta > 0 && currentScrollY > 80;
+        setIsHidden((prev) => (prev !== nextHidden ? nextHidden : prev));
+        lastScrollY = currentScrollY > 0 ? currentScrollY : 0;
+      }
+
+      ticking = false;
     };
 
-    window.addEventListener("scroll", updateScrollDirection, { passive: true });
-    return () => window.removeEventListener("scroll", updateScrollDirection);
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScroll);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  return { scrollDirection, scrollY };
+  return { isScrolled, isHidden };
 }
+

@@ -1,15 +1,33 @@
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import styles from "./CustomCursor.module.css";
 
 const CustomCursor = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isTouch, setIsTouch] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const dotRef = useRef(null);
+
+  const mouseX = useMotionValue(-100);
+  const mouseY = useMotionValue(-100);
+
+  const springConfig = { damping: 25, stiffness: 220, mass: 0.4 };
+  const ringX = useSpring(mouseX, springConfig);
+  const ringY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
+    if (window.matchMedia("(pointer: coarse)").matches) {
+      setIsTouch(true);
+      return;
+    }
+
     const moveCursor = (e) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+      const { clientX, clientY } = e;
+      if (dotRef.current) {
+        dotRef.current.style.transform = `translate3d(${clientX}px, ${clientY}px, 0) translate(-50%, -50%)`;
+      }
+      mouseX.set(clientX);
+      mouseY.set(clientY);
       if (!isVisible) setIsVisible(true);
     };
 
@@ -20,7 +38,7 @@ const CustomCursor = () => {
         target.tagName === "BUTTON" ||
         target.closest("a") ||
         target.closest("button") ||
-        target.dataset.cursor === "hover"
+        target.dataset?.cursor === "hover"
       ) {
         setIsHovering(true);
       } else {
@@ -28,28 +46,29 @@ const CustomCursor = () => {
       }
     };
 
-    window.addEventListener("mousemove", moveCursor);
-    window.addEventListener("mouseover", handleMouseOver);
+    window.addEventListener("mousemove", moveCursor, { passive: true });
+    window.addEventListener("mouseover", handleMouseOver, { passive: true });
     return () => {
       window.removeEventListener("mousemove", moveCursor);
       window.removeEventListener("mouseover", handleMouseOver);
     };
-  }, [isVisible]);
+  }, [isVisible, mouseX, mouseY]);
 
-  if (!isVisible) return null;
+  if (isTouch || !isVisible) return null;
 
   return (
     <>
-      {/* Instant dot */}
-      <div
-        className={styles.dot}
-        style={{ left: position.x, top: position.y }}
-      />
-      {/* Trailing ring */}
+      {/* Instant dot using direct GPU transform */}
+      <div ref={dotRef} className={styles.dot} />
+      {/* Trailing ring using GPU-accelerated spring */}
       <motion.div
         className={`${styles.ring} ${isHovering ? styles.ringExpanded : ""}`}
-        animate={{ left: position.x, top: position.y }}
-        transition={{ type: "spring", stiffness: 150, damping: 18, mass: 0.5 }}
+        style={{
+          x: ringX,
+          y: ringY,
+          translateX: "-50%",
+          translateY: "-50%",
+        }}
       />
     </>
   );
