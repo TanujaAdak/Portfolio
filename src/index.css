@@ -55,11 +55,6 @@ body {
   overflow-x: hidden;
 }
 
-@media (pointer: fine) {
-  body {
-    cursor: none;
-  }
-}
 
 /* ─── Custom Scrollbar ─── */
 ::-webkit-scrollbar {
@@ -97,10 +92,18 @@ html {
   outline-offset: 2px;
 }
 
-/* ─── Anchors ─── */
+/* ─── Anchors & Buttons ─── */
 a {
   color: inherit;
   text-decoration: none;
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  background: none;
 }
 
 /* ─── Images ─── */
@@ -126,7 +129,3 @@ img {
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* ─── No cursor for body (custom cursor handles it) ─── */
-*, a, button, input, textarea, label {
-  cursor: none !important;
-}

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import Preloader from "./components/Preloader/Preloader";
-import CustomCursor from "./components/CustomCursor/CustomCursor";
 import ScrollProgressBar from "./components/ScrollProgressBar/ScrollProgressBar";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./sections/Hero/Hero";
@@ -22,7 +21,6 @@ function App() {
 
   return (
     <>
-      <CustomCursor />
       <ScrollProgressBar />
 
       <AnimatePresence mode="wait">
