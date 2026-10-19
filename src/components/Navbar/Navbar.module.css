@@ -1,8 +1,9 @@
 .nav {
   position: fixed;
   top: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   width: calc(100% - 3rem);
   max-width: 1200px;
   z-index: 999;
@@ -168,5 +169,15 @@
   }
   .ctaBtn {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav {
+    width: calc(100% - 1.5rem);
+    top: 0.75rem;
+  }
+  .inner {
+    padding: 0.6rem 1rem;
   }
 }
