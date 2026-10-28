@@ -15,7 +15,7 @@ export const personalInfo = {
   phone: "+91-79873 99719",
   linkedin: "https://www.linkedin.com/in/tanuja-adak/",
   github: "https://github.com/TanujaAdak",
-  portfolio: "#",
+  portfolio: "https://tanuja25-portfolio.vercel.app/",
   availableForWork: true,
   resumeLink: "#",
 };
