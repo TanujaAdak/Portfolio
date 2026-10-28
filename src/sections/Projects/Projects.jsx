@@ -43,8 +43,8 @@ const ProjectCard = ({ project, index }) => {
                 </div>
                 <div className={styles.mockupCode}>
                   <span style={{ color: project.color }}>{`// ${project.title}`}</span>
-                  <span style={{ color: "#888" }}>{"const result = await"}</span>
-                  <span style={{ color: "#e5e5e5" }}>{"  ai.predict(data)"}</span>
+                  <span style={{ color: "#888" }}>{project.mockupLine1 || "const result = await"}</span>
+                  <span style={{ color: "#e5e5e5" }}>{project.mockupLine2 || "  ai.predict(data)"}</span>
                   <span style={{ color: project.color }}>{"// ✓ " + (project.duration.split("–")[1]?.trim() || "Done")}</span>
                 </div>
               </div>
@@ -83,14 +83,49 @@ const ProjectCard = ({ project, index }) => {
             </div>
 
             <div className={styles.cardLinks}>
-              <a href={project.github} className={styles.cardLink} target="_blank" rel="noopener noreferrer">
-                <GithubIcon size={15} />
-                Code
-              </a>
-              <a href={project.live} className={styles.cardLink} target="_blank" rel="noopener noreferrer">
-                <ExternalLink size={15} />
-                Demo
-              </a>
+              {project.github && project.github !== "#" ? (
+                <a
+                  href={project.github}
+                  className={styles.cardLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`View ${project.title} source code on GitHub`}
+                >
+                  <GithubIcon size={15} />
+                  Code
+                </a>
+              ) : (
+                <span
+                  className={`${styles.cardLink} ${styles.cardLinkDisabled}`}
+                  title="Source code repository link pending"
+                  aria-disabled="true"
+                >
+                  <GithubIcon size={15} />
+                  Code <span className={styles.pendingTag}>Soon</span>
+                </span>
+              )}
+
+              {project.live && project.live !== "#" ? (
+                <a
+                  href={project.live}
+                  className={styles.cardLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`View ${project.title} live demo`}
+                >
+                  <ExternalLink size={15} />
+                  Demo
+                </a>
+              ) : (
+                <span
+                  className={`${styles.cardLink} ${styles.cardLinkDisabled}`}
+                  title="Live demo link pending"
+                  aria-disabled="true"
+                >
+                  <ExternalLink size={15} />
+                  Demo <span className={styles.pendingTag}>Soon</span>
+                </span>
+              )}
             </div>
           </div>
         </div>
@@ -114,7 +149,7 @@ const Projects = () => {
           <span className={styles.sectionLabel}>Portfolio</span>
           <h2 className={styles.sectionTitle}>Selected <span>Projects</span></h2>
           <p className={styles.sectionSubtitle}>
-            End-to-end systems spanning mobile apps, NLP pipelines, and biomedical signal processing.
+            End-to-end systems spanning interactive algorithm visualizers, AI mobile applications, and biomedical signal processing.
           </p>
         </motion.div>
 

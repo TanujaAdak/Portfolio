@@ -9,12 +9,12 @@ export const personalInfo = {
   lastName: "Adak",
   title: "ML Engineer & Full-Stack Developer",
   tagline: "Building intelligent systems at the intersection of AI and elegant interfaces.",
-  bio: "I'm a Computer Science student specializing in Machine Learning, Deep Learning, and Full-Stack Development. I love crafting end-to-end systems — from signal processing pipelines to production-ready mobile apps — that solve real-world problems with precision.",
+  bio: "Recent B.Tech CSE graduate specializing in Machine Learning and Full-Stack (MERN) development, backed by published IEEE research. Experienced in architecting end-to-end AI pipelines, deploying classification models, and building scalable web applications.",
   location: "Raipur, India",
   email: "adaktanuja@gmail.com",
   phone: "+91-79873 99719",
-  linkedin: "https://www.linkedin.com/in/tanuja-adak",
-  github: "https://github.com/tanuja-adak",
+  linkedin: "https://www.linkedin.com/in/tanuja-adak/",
+  github: "https://github.com/TanujaAdak",
   portfolio: "#",
   availableForWork: true,
   resumeLink: "#",
@@ -31,15 +31,12 @@ export const navLinks = [
 
 export const skills = {
   Languages: ["Python", "JavaScript"],
-  Frontend: ["React.js", "React Native", "HTML5", "CSS3", "Responsive Design"],
+  Frontend: ["React", "React Native", "HTML", "CSS", "Responsive UI Design"],
   Backend: ["REST APIs", "Express.js", "Node.js", "JWT Authentication"],
   "ML & AI": [
     "Machine Learning",
-    "Deep Learning",
     "Data Preprocessing",
-    "TF-IDF",
-    "NLP",
-    "Computer Vision",
+    "Deep Learning",
   ],
   Libraries: [
     "TensorFlow",
@@ -50,23 +47,22 @@ export const skills = {
     "Groq Vision",
   ],
   Databases: ["PostgreSQL", "Firebase"],
-  Tools: ["VS Code", "Jupyter Notebook", "Google Colab", "Git", "GitHub"],
+  Tools: ["Git", "GitHub", "VS Code", "Jupyter Notebook", "Google Colab", "Firebase"],
 };
 
 export const experiences = [
   {
     id: 1,
     role: "Machine Learning (ML) & Deep Learning Trainee",
-    company: "IIT Naya Raipur",
+    company: "IIIT Naya Raipur",
     type: "Internship",
     duration: "May 2025 – Jul 2025",
     location: "Raipur, India",
     description: [
       "Engineered a data preprocessing and feature extraction pipeline in Python to analyze raw PPG waveforms, achieving 89.7% classification accuracy using SVM and Random Forest models.",
       "Architected a cross-platform mobile application using React Native to facilitate real-time biometric signal monitoring and user data visualization.",
-      "Integrated predictive ML models with the React Native frontend via REST APIs, ensuring seamless real-time data synchronization and live feedback.",
     ],
-    tags: ["Python", "ML", "React Native", "REST APIs", "SVM", "Random Forest"],
+    tags: ["Python", "React Native", "SVM", "Random Forest"],
     color: "#4F46E5",
   },
 ];
@@ -74,50 +70,56 @@ export const experiences = [
 export const projects = [
   {
     id: 1,
-    title: "MilliCard — Soil Health App",
+    title: "Algo Learner Studio",
     description:
-      "An AI-powered mobile app that scans ICAR Soil Health Cards using Groq Vision OCR and delivers crop-specific fertilizer recommendations with cost estimates in Hindi and English.",
+      "Built an interactive visualizer for 15+ data structures and algorithms, including AVL Trees, Heaps, Graphs, Dynamic Programming, and Sorting Race, with frame-by-frame playback controls and synchronized pseudocode execution.",
     longDescription:
-      "Developed an advisory system for 7 crops with NPK deficiency detection and soil health scoring (0–100), supported by a Node.js/Express and PostgreSQL backend with OTP authentication and Firebase push notifications.",
-    tags: ["JavaScript", "React Native", "PostgreSQL", "Groq Vision", "Node.js", "Firebase"],
-    github: "#",
+      "Integrated a zero-dependency Web Audio API synthesizer for pitch-scaled audio feedback during comparisons and rotations; implemented live Big-O time and space complexity telemetry.",
+    tags: ["React", "JavaScript", "Web Audio API", "CSS"],
+    github: "https://github.com/TanujaAdak/Algo-learner-studio",
+    live: "#",
+    duration: "Sep 2026 – Oct 2026",
+    color: "#A6D957",
+    gradient: "linear-gradient(135deg, #172210 0%, #233516 100%)",
+    orbColor: "#A6D957",
+    mockupLine1: "audioSynth.playPitch(freq);",
+    mockupLine2: "  avlTree.rotateLeft(pivot);",
+    featured: true,
+  },
+  {
+    id: 2,
+    title: "MittiCard: Soil Health App",
+    description:
+      "Developed an AI-powered mobile app that scans ICAR Soil Health Cards using Groq Vision OCR and delivers crop-specific fertilizer recommendations with cost estimates in Hindi and English.",
+    longDescription:
+      "Engineered an advisory system for 7 crops with NPK deficiency detection and soil health scoring (0–100), supported by a Node.js/Express and PostgreSQL backend with OTP authentication and Firebase push notifications.",
+    tags: ["JavaScript", "React Native", "PostgreSQL", "Groq Vision"],
+    github: "https://github.com/Rajkamal08/MittiCard",
     live: "#",
     duration: "Feb 2026 – Apr 2026",
     color: "#22C55E",
     gradient: "linear-gradient(135deg, #022c22 0%, #14532d 100%)",
     orbColor: "#22C55E",
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "Fake News Detection System",
-    description:
-      "A full NLP pipeline — raw text ingestion, tokenization, stopword removal, TF-IDF vectorization — to classify news articles as real or fake with high precision.",
-    longDescription:
-      "Evaluated multiple classifiers including Logistic Regression, Naïve Bayes, and SVM. Selected the best-performing model based on F1-score and accuracy metrics.",
-    tags: ["Python", "scikit-learn", "TF-IDF", "Logistic Regression", "NLP", "Naïve Bayes"],
-    github: "#",
-    live: "#",
-    duration: "Dec 2025 – Jan 2026",
-    color: "#E11D48",
-    gradient: "linear-gradient(135deg, #1f0010 0%, #4c0519 100%)",
-    orbColor: "#E11D48",
+    mockupLine1: "await groqVision.scanCard(img);",
+    mockupLine2: "  advisory.computeNPK(deficiency);",
     featured: true,
   },
   {
     id: 3,
     title: "PPG Signal Quality Assessment",
     description:
-      "A full-stack cardiovascular health app that extracts raw PPG optical signals directly from a smartphone camera using custom Kotlin native hardware bridges.",
+      "Built an end-to-end biomedical signal processing pipeline that ingests raw PPG data, applies noise filtering, extracts multi-domain features, and classifies signal quality in real time.",
     longDescription:
-      "Engineered a clinical ML pipeline using Butterworth DSP filters and 30+ statistical features, achieving 95% classification accuracy with a Random Forest model deployed via FastAPI.",
-    tags: ["React", "FastAPI", "Kotlin", "scikit-learn", "Random Forest", "DSP"],
-    github: "#",
+      "Engineered a clinical machine learning pipeline using Butterworth DSP filters and 30+ statistical features, achieving 95% classification accuracy with a Random Forest model deployed via FastAPI.",
+    tags: ["Python", "React Native", "SVM", "Random Forest"],
+    github: "https://github.com/Rajkamal08/PPG-Signal-Quality-Assessment",
     live: "#",
-    duration: "Jul 2025 – Aug 2025",
-    color: "#F59E0B",
-    gradient: "linear-gradient(135deg, #1c1200 0%, #451a03 100%)",
-    orbColor: "#F59E0B",
+    duration: "July 2025 – Aug 2025",
+    color: "#38BDF8",
+    gradient: "linear-gradient(135deg, #082f49 0%, #0c4a6e 100%)",
+    orbColor: "#38BDF8",
+    mockupLine1: "filtered = butterworth(rawPPG);",
+    mockupLine2: "  accuracy = model.predict(features);",
     featured: true,
   },
 ];
@@ -132,7 +134,7 @@ export const publications = [
     authors: "Tanuja Adak et al.",
     abstract:
       "A clinical machine learning pipeline for assessing PPG signal quality extracted from smartphone cameras using DSP filtering techniques and statistical feature engineering.",
-    link: "#",
+    link: "https://github.com/Rajkamal08/PPG-Signal-Quality-Assessment",
     badge: "IEEE Preprint",
     color: "#4F46E5",
   },
@@ -141,7 +143,7 @@ export const publications = [
 export const certifications = [
   {
     id: 1,
-    title: "Certificate in Artificial Intelligence & Machine Learning",
+    title: "Artificial Intelligence & Machine Learning Training",
     issuer: "IIIT Naya Raipur",
     date: "Jul 2025",
     icon: "🎓",
@@ -170,14 +172,6 @@ export const certifications = [
     date: "2022",
     icon: "🏆",
     color: "#E11D48",
-  },
-  {
-    id: 5,
-    title: "Hackathon Participant",
-    issuer: "R1CODE FIESTA",
-    date: "2024",
-    icon: "⚡",
-    color: "#8B5CF6",
   },
 ];
 

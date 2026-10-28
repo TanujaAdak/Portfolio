@@ -19,6 +19,9 @@ const MagneticButton = ({ children, className = "", onClick, href, variant = "pr
     setPosition({ x: 0, y: 0 });
   };
 
+  const isExternal = Boolean(
+    href && !href.startsWith("mailto:") && !href.startsWith("tel:") && !href.startsWith("#")
+  );
   const Tag = href ? "a" : "button";
 
   return (
@@ -34,8 +37,8 @@ const MagneticButton = ({ children, className = "", onClick, href, variant = "pr
         className={styles.btn}
         onClick={onClick}
         href={href}
-        target={href ? "_blank" : undefined}
-        rel={href ? "noopener noreferrer" : undefined}
+        target={isExternal ? "_blank" : undefined}
+        rel={isExternal ? "noopener noreferrer" : undefined}
       >
         {children}
       </Tag>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { navLinks, personalInfo } from "../../constants/data";
@@ -8,6 +8,28 @@ import styles from "./Navbar.module.css";
 const Navbar = () => {
   const { isScrolled, isHidden } = useScrollDirection();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + 200;
+      for (let i = navLinks.length - 1; i >= 0; i--) {
+        const id = navLinks[i].href.replace("#", "");
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= scrollPos) {
+          setActiveSection(navLinks[i].href);
+          return;
+        }
+      }
+      if (window.scrollY < 200) {
+        setActiveSection("");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollTo = (href) => {
     const el = document.querySelector(href);
@@ -24,7 +46,11 @@ const Navbar = () => {
     >
       <div className={styles.inner}>
         {/* Logo */}
-        <button className={styles.logo} onClick={() => scrollTo("#hero")}>
+        <button
+          className={styles.logo}
+          onClick={() => scrollTo("#hero")}
+          aria-label="Tanuja Adak - Scroll to top"
+        >
           <span className={styles.logoMark}>TA</span>
           <span className={styles.logoName}>{personalInfo.firstName} <span>Adak</span></span>
         </button>
@@ -33,7 +59,10 @@ const Navbar = () => {
         <ul className={styles.links}>
           {navLinks.map((link) => (
             <li key={link.href}>
-              <button className={styles.link} onClick={() => scrollTo(link.href)}>
+              <button
+                className={`${styles.link} ${activeSection === link.href ? styles.linkActive : ""}`}
+                onClick={() => scrollTo(link.href)}
+              >
                 {link.label}
               </button>
             </li>
@@ -71,7 +100,7 @@ const Navbar = () => {
             {navLinks.map((link, i) => (
               <motion.button
                 key={link.href}
-                className={styles.mobileLink}
+                className={`${styles.mobileLink} ${activeSection === link.href ? styles.mobileActive : ""}`}
                 onClick={() => scrollTo(link.href)}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}

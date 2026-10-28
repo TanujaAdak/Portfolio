@@ -4,6 +4,7 @@ import Preloader from "./components/Preloader/Preloader";
 import ScrollProgressBar from "./components/ScrollProgressBar/ScrollProgressBar";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./sections/Hero/Hero";
+import About from "./sections/About/About";
 import Projects from "./sections/Projects/Projects";
 import Experience from "./sections/Experience/Experience";
 import Skills from "./sections/Skills/Skills";
@@ -32,6 +33,8 @@ function App() {
           <Navbar />
           <main>
             <Hero />
+            <div className="section-divider" />
+            <About />
             <div className="section-divider" />
             <Projects />
             <div className="section-divider" />

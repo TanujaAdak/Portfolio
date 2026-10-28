@@ -1,46 +1,35 @@
 .wrapper {
   display: inline-flex;
-  border-radius: 14px;
+  border-radius: var(--radius-md);
 }
 
 .btn {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
   font-weight: 600;
-  padding: 0.85rem 2rem;
-  border-radius: 14px;
+  padding: 0.8rem 1.85rem;
+  border-radius: var(--radius-md);
   border: none;
   cursor: pointer;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  transition: background var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
   position: relative;
   overflow: hidden;
 }
 
+/* Primary Variant: Chartreuse accent with dark text */
 .primary .btn {
-  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
-  color: #fff;
-  box-shadow: 0 0 30px rgba(79, 70, 229, 0.35);
-}
-
-.primary .btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.primary:hover .btn::before {
-  opacity: 1;
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+  box-shadow: var(--shadow-sm);
 }
 
 .primary:hover .btn {
-  box-shadow: 0 0 50px rgba(79, 70, 229, 0.55);
+  background: var(--color-accent-hover);
+  box-shadow: var(--shadow-accent);
 }
 
 .primary .btn > * {
@@ -48,15 +37,31 @@
   z-index: 1;
 }
 
+/* Secondary Variant: Subtle border on transparent/surface with primary text */
 .secondary .btn {
   background: transparent;
-  color: #e5e5e5;
-  border: 1px solid #2a2a2a;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
   box-shadow: none;
 }
 
 .secondary:hover .btn {
-  border-color: #4F46E5;
-  color: #fff;
-  background: rgba(79, 70, 229, 0.08);
+  border-color: var(--color-border-interactive);
+  color: var(--color-text-primary);
+  background: var(--color-surface-elevated);
+}
+
+/* Disabled & Inactive States */
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none !important;
+}
+
+/* Accessible Keyboard Focus */
+.btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
 }

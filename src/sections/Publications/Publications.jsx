@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { BookOpen, ExternalLink } from "lucide-react";
+import { BookOpen, ExternalLink, Award } from "lucide-react";
 import { publications, certifications } from "../../constants/data";
 import { staggerContainer, fadeInUp } from "../../animations/variants";
 import styles from "./Publications.module.css";
@@ -8,17 +8,22 @@ const Publications = () => {
   return (
     <section id="publications" className={styles.section}>
       <div className={styles.container}>
-        {/* Publications */}
+        {/* Research Publication Block */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
           className={styles.block}
         >
           <div className={styles.blockHeader}>
-            <span className={styles.sectionLabel}>Research</span>
-            <h2 className={styles.sectionTitle}>Publications</h2>
+            <span className={styles.sectionLabel}>Scholarly Contributions</span>
+            <h2 className={styles.sectionTitle}>
+              Research & <span className={styles.accentText}>Publications</span>
+            </h2>
+            <p className={styles.sectionSubtitle}>
+              Peer-reviewed and preprint contributions advancing biomedical signal processing.
+            </p>
           </div>
 
           <motion.div
@@ -30,36 +35,66 @@ const Publications = () => {
           >
             {publications.map((pub) => (
               <motion.div key={pub.id} className={styles.pubCard} variants={fadeInUp}>
-                <div className={styles.pubGlow} />
                 <div className={styles.pubTop}>
-                  <span className={styles.pubBadge} style={{ color: pub.color, borderColor: `${pub.color}40`, background: `${pub.color}10` }}>
-                    <BookOpen size={11} /> {pub.badge}
+                  <span className={styles.pubBadge}>
+                    <BookOpen size={12} />
+                    {pub.badge}
                   </span>
                   <span className={styles.pubDate}>{pub.date}</span>
                 </div>
+
                 <h3 className={styles.pubTitle}>{pub.title}</h3>
-                <p className={styles.pubAuthors}>{pub.authors}</p>
-                <p className={styles.pubJournal}>{pub.journal}</p>
+
+                <div className={styles.pubMetaRow}>
+                  <span className={styles.pubAuthors}>{pub.authors}</span>
+                  <span className={styles.metaDivider}>•</span>
+                  <span className={styles.pubJournal}>{pub.journal}</span>
+                </div>
+
                 <p className={styles.pubAbstract}>{pub.abstract}</p>
-                <a href={pub.link} className={styles.pubLink} target="_blank" rel="noopener noreferrer">
-                  <ExternalLink size={14} /> Read Paper
-                </a>
+
+                <div className={styles.pubActionRow}>
+                  {pub.link && pub.link !== "#" ? (
+                    <a
+                      href={pub.link}
+                      className={styles.pubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Read research paper: ${pub.title}`}
+                    >
+                      <ExternalLink size={14} /> Read Paper
+                    </a>
+                  ) : (
+                    <span
+                      className={`${styles.pubLink} ${styles.pubLinkDisabled}`}
+                      title="Preprint manuscript link pending"
+                      aria-disabled="true"
+                    >
+                      <ExternalLink size={14} /> TechRxiv Preprint Available
+                    </span>
+                  )}
+                </div>
               </motion.div>
             ))}
           </motion.div>
         </motion.div>
 
-        {/* Certifications */}
+        {/* Certifications Block */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
           className={styles.block}
         >
           <div className={styles.blockHeader}>
-            <span className={styles.sectionLabel}>Achievements</span>
-            <h2 className={styles.sectionTitle}>Certifications</h2>
+            <span className={styles.sectionLabel}>Credentials & Awards</span>
+            <h2 className={styles.sectionTitle}>
+              Verified <span className={styles.accentText}>Certifications</span>
+            </h2>
+            <p className={styles.sectionSubtitle}>
+              Industry, academic, and competitive recognitions in Machine Learning and Web Development.
+            </p>
           </div>
 
           <motion.div
@@ -74,14 +109,14 @@ const Publications = () => {
                 key={cert.id}
                 className={styles.certCard}
                 variants={fadeInUp}
-                whileHover={{ y: -4, borderColor: `${cert.color}60` }}
-                transition={{ duration: 0.25 }}
               >
-                <div className={styles.certIcon}>{cert.icon}</div>
+                <div className={styles.certIconWrapper}>
+                  <Award size={18} className={styles.awardIcon} />
+                </div>
                 <div className={styles.certContent}>
                   <h4 className={styles.certTitle}>{cert.title}</h4>
                   <div className={styles.certMeta}>
-                    <span className={styles.certIssuer} style={{ color: cert.color }}>{cert.issuer}</span>
+                    <span className={styles.certIssuer}>{cert.issuer}</span>
                     <span className={styles.certDate}>{cert.date}</span>
                   </div>
                 </div>

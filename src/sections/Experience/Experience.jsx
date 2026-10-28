@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Briefcase, MapPin, Calendar } from "lucide-react";
+import { Briefcase, MapPin, Calendar, GraduationCap } from "lucide-react";
 import { experiences, education } from "../../constants/data";
 import { fadeInUp, staggerContainer, lineVariant } from "../../animations/variants";
 import styles from "./Experience.module.css";
@@ -11,13 +11,18 @@ const Experience = () => {
         {/* Header */}
         <motion.div
           className={styles.header}
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
         >
-          <span className={styles.sectionLabel}>Career</span>
-          <h2 className={styles.sectionTitle}>Experience & <span>Education</span></h2>
+          <span className={styles.sectionLabel}>Track Record</span>
+          <h2 className={styles.sectionTitle}>
+            Experience & <span className={styles.accentText}>Education</span>
+          </h2>
+          <p className={styles.sectionSubtitle}>
+            Hands-on machine learning traineeship and computer science engineering foundation.
+          </p>
         </motion.div>
 
         <div className={styles.content}>
@@ -30,7 +35,7 @@ const Experience = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <Briefcase size={16} />
+              <Briefcase size={16} className={styles.blockIcon} />
               Work Experience
             </motion.h3>
 
@@ -48,7 +53,7 @@ const Experience = () => {
                   variants={fadeInUp}
                 >
                   <div className={styles.timelineLeft}>
-                    <div className={styles.dot} style={{ borderColor: exp.color, boxShadow: `0 0 12px ${exp.color}60` }} />
+                    <div className={styles.dot} />
                     {i < experiences.length - 1 && (
                       <motion.div
                         className={styles.line}
@@ -61,8 +66,8 @@ const Experience = () => {
                       <div>
                         <h4 className={styles.role}>{exp.role}</h4>
                         <div className={styles.companyRow}>
-                          <span className={styles.company} style={{ color: exp.color }}>{exp.company}</span>
-                          <span className={styles.type}>{exp.type}</span>
+                          <span className={styles.company}>{exp.company}</span>
+                          <span className={styles.typeBadge}>{exp.type}</span>
                         </div>
                       </div>
                       <div className={styles.metaRight}>
@@ -80,8 +85,8 @@ const Experience = () => {
                     <ul className={styles.descList}>
                       {exp.description.map((point, j) => (
                         <li key={j} className={styles.descItem}>
-                          <span className={styles.bullet} style={{ background: exp.color }} />
-                          {point}
+                          <span className={styles.bullet} />
+                          <span>{point}</span>
                         </li>
                       ))}
                     </ul>
@@ -106,7 +111,8 @@ const Experience = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              🎓 Education
+              <GraduationCap size={16} className={styles.blockIcon} />
+              Education
             </motion.h3>
 
             <motion.div
@@ -123,23 +129,26 @@ const Experience = () => {
                   variants={fadeInUp}
                 >
                   <div className={styles.timelineLeft}>
-                    <div className={styles.dot} style={{ borderColor: "#4F46E5", boxShadow: "0 0 12px #4F46E560" }} />
+                    <div className={styles.dot} />
                   </div>
                   <div className={styles.timelineContent}>
                     <div className={styles.itemHeader}>
                       <div>
                         <h4 className={styles.role}>{edu.degree}</h4>
-                        <span className={styles.company} style={{ color: "#4F46E5" }}>{edu.institution}</span>
+                        <span className={styles.company}>{edu.institution}</span>
                       </div>
                       <div className={styles.metaRight}>
                         <span className={styles.metaItem}>
                           <Calendar size={11} /> {edu.duration}
                         </span>
-                        <span className={styles.cgpa}>
+                        <span className={styles.cgpaBadge}>
                           CGPA: <strong>{edu.cgpa}</strong>
                         </span>
                       </div>
                     </div>
+                    <p className={styles.eduDesc}>
+                      Focused on algorithms, data structures, machine learning, and full-stack software development.
+                    </p>
                   </div>
                 </motion.div>
               ))}

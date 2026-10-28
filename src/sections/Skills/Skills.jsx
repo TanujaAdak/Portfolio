@@ -1,16 +1,17 @@
 import { motion } from "framer-motion";
+import { Terminal, Layout, Server, Brain, Cpu, Database, Wrench } from "lucide-react";
 import { skills } from "../../constants/data";
 import { staggerContainer, tagVariant } from "../../animations/variants";
 import styles from "./Skills.module.css";
 
-const accentColors = {
-  Languages: "#4F46E5",
-  Frontend: "#22C55E",
-  Backend: "#F59E0B",
-  "ML & AI": "#E11D48",
-  Libraries: "#8B5CF6",
-  Databases: "#06B6D4",
-  Tools: "#F97316",
+const categoryIcons = {
+  Languages: Terminal,
+  Frontend: Layout,
+  Backend: Server,
+  "ML & AI": Brain,
+  Libraries: Cpu,
+  Databases: Database,
+  Tools: Wrench,
 };
 
 const Skills = () => {
@@ -20,36 +21,40 @@ const Skills = () => {
         {/* Header */}
         <motion.div
           className={styles.header}
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
         >
-          <span className={styles.sectionLabel}>Expertise</span>
-          <h2 className={styles.sectionTitle}>Technical <span>Skills</span></h2>
+          <span className={styles.sectionLabel}>Technical Stack</span>
+          <h2 className={styles.sectionTitle}>
+            Technical <span className={styles.accentText}>Skills</span>
+          </h2>
           <p className={styles.sectionSubtitle}>
-            A curated set of technologies I use to build intelligent, scalable systems.
+            A rigorous engineering toolkit spanning data science pipelines, neural architectures, and full-stack web platforms.
           </p>
         </motion.div>
 
         {/* Skills Grid */}
         <div className={styles.grid}>
           {Object.entries(skills).map(([category, items], i) => {
-            const color = accentColors[category] || "#4F46E5";
+            const Icon = categoryIcons[category] || Terminal;
+
             return (
               <motion.div
                 key={category}
                 className={styles.categoryCard}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: i * 0.07 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.45, delay: i * 0.06 }}
               >
                 <div className={styles.categoryHeader}>
-                  <span className={styles.categoryDot} style={{ background: color, boxShadow: `0 0 10px ${color}80` }} />
-                  <h3 className={styles.categoryName} style={{ color }}>
-                    {category}
-                  </h3>
+                  <div className={styles.iconWrapper}>
+                    <Icon size={16} className={styles.icon} />
+                  </div>
+                  <h3 className={styles.categoryName}>{category}</h3>
+                  <span className={styles.countBadge}>{items.length}</span>
                 </div>
 
                 <motion.div
@@ -64,13 +69,6 @@ const Skills = () => {
                       key={skill}
                       className={styles.skillTag}
                       variants={tagVariant}
-                      whileHover={{
-                        scale: 1.05,
-                        color,
-                        borderColor: `${color}60`,
-                        background: `${color}0d`,
-                      }}
-                      style={{ borderColor: `${color}20` }}
                     >
                       {skill}
                     </motion.span>

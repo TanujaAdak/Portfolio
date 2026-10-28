@@ -1,41 +1,95 @@
 /* ============================================================
-   GLOBAL.CSS — Design tokens, resets, typography, scrollbar
+   INDEX.CSS — Design tokens, resets, typography, global utilities
+   Dark Editorial Direction (Approved System)
    ============================================================ */
 
-/* Google Fonts + Fontshare */
+/* ─── Typography Imports ─── */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,800,900&display=swap');
 
-/* ─── CSS Variables ─── */
+/* ─── CSS Variables & Design Tokens ─── */
 :root {
-  /* Colors */
-  --bg: #050505;
-  --surface: #111111;
-  --surface-2: #161616;
-  --border: #1e1e1e;
-  --border-2: #2a2a2a;
+  /* ─── Dark Editorial Color Palette ─── */
+  --color-bg: #17191D;
+  --color-surface: #22252A;
+  --color-surface-elevated: #2A2D33;
+  --color-surface-inset: #131417;
 
-  /* Text */
-  --text-primary: #f0f0f0;
-  --text-secondary: #888888;
-  --text-muted: #555555;
+  --color-text-primary: #F4F1E9;
+  --color-text-secondary: #B7BABE;
+  --color-text-muted: #8D9197;
 
-  /* Accents */
+  /* ─── Signature Technical Accent (Chartreuse) ─── */
+  --color-accent: #A6D957;
+  --color-accent-hover: #BDED72;
+  --color-accent-subtle: rgba(166, 217, 87, 0.08);
+  --color-accent-border: rgba(166, 217, 87, 0.25);
+  --color-accent-text: #121417;
+
+  /* ─── Borders & Hairlines ─── */
+  --color-border: #383B40;
+  --color-border-subtle: #2C2F35;
+  --color-border-interactive: #50555C;
+
+  /* ─── Typography Stacks ─── */
+  --font-display: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* ─── Layout & Content Widths ─── */
+  --container-max: 1120px;
+  --container-narrow: 860px;
+  --section-py: clamp(4.5rem, 8vw, 7rem);
+  --section-px: clamp(1.25rem, 4vw, 2rem);
+
+  /* ─── Spacing Scale (8pt Grid Basis) ─── */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.5rem;   /* 24px */
+  --space-6: 2rem;     /* 32px */
+  --space-8: 3rem;     /* 48px */
+  --space-10: 4rem;    /* 64px */
+  --space-12: 5rem;    /* 80px */
+  --space-16: 6.5rem;  /* 104px */
+
+  /* ─── Border Radii ─── */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* ─── Elevation & Shadows ─── */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 8px 24px -4px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 16px 36px -6px rgba(0, 0, 0, 0.45);
+  --shadow-accent: 0 0 24px rgba(166, 217, 87, 0.2);
+
+  /* ─── Transitions ─── */
+  --transition-fast: 150ms cubic-bezier(0.2, 0, 0, 1);
+  --transition-normal: 250ms cubic-bezier(0.2, 0, 0, 1);
+  --transition-spring: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ─── Legacy Variable Aliases (Retained for component compatibility) ─── */
+  --bg: var(--color-bg);
+  --surface: var(--color-surface);
+  --surface-2: var(--color-surface-elevated);
+  --border: var(--color-border);
+  --border-2: var(--color-border-interactive);
+  --text-primary: var(--color-text-primary);
+  --text-secondary: var(--color-text-secondary);
+  --text-muted: var(--color-text-muted);
+  --radius: var(--radius-lg);
+
+  /* Legacy color tokens retained for components pending migration */
   --indigo: #4F46E5;
   --emerald: #22C55E;
   --rose: #E11D48;
   --amber: #F59E0B;
   --violet: #8B5CF6;
-
-  /* Typography */
-  --font-display: 'Satoshi', -apple-system, sans-serif;
-  --font-body: 'Inter', -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-
-  /* Spacing */
-  --radius: 16px;
-  --radius-sm: 8px;
-  --radius-lg: 24px;
 }
 
 /* ─── Reset ─── */
@@ -47,14 +101,13 @@
 
 body {
   font-family: var(--font-body);
-  background-color: var(--bg);
-  color: var(--text-primary);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
-
 
 /* ─── Custom Scrollbar ─── */
 ::-webkit-scrollbar {
@@ -62,34 +115,35 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: var(--color-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2a2a2a;
+  background: var(--color-border);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4F46E5;
+  background: var(--color-accent);
 }
 
 /* Firefox */
 html {
   scrollbar-width: thin;
-  scrollbar-color: #2a2a2a #0a0a0a;
+  scrollbar-color: var(--color-border) var(--color-bg);
 }
 
 /* ─── Selection ─── */
 ::selection {
-  background: rgba(79, 70, 229, 0.3);
-  color: #fff;
+  background: rgba(166, 217, 87, 0.25);
+  color: var(--color-text-primary);
 }
 
-/* ─── Focus visible ─── */
+/* ─── Accessible Focus Visible ─── */
 :focus-visible {
-  outline: 2px solid var(--indigo);
-  outline-offset: 2px;
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-xs);
 }
 
 /* ─── Anchors & Buttons ─── */
@@ -113,19 +167,28 @@ img {
   display: block;
 }
 
-/* ─── Section dividers ─── */
+/* ─── Section Dividers ─── */
 .section-divider {
-  max-width: 1200px;
+  max-width: var(--container-max);
   margin: 0 auto;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
 }
 
-/* ─── Glassmorphism utility ─── */
+/* ─── Glassmorphism Utility ─── */
 .glass {
-  background: rgba(17, 17, 17, 0.6);
+  background: rgba(34, 37, 42, 0.65);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--color-border-subtle);
 }
 
+/* ─── Motion Accessibility (prefers-reduced-motion) ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
