@@ -1,6 +1,6 @@
 # Tanuja Adak — ML Engineer & Full-Stack Developer
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-tanuja25--portfolio.vercel.app-A6D957?style=for-the-badge&logo=vercel&logoColor=black)](https://tanuja25-portfolio.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-tanuja25--portfolio.vercel.app-A6D957?style=for-the-badge&logo=vercel&logoColor=black)](https://tanuja25-portfolio.vercel.app)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Tanuja%20Adak-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tanuja-adak/)
 [![GitHub](https://img.shields.io/badge/GitHub-TanujaAdak-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/TanujaAdak)
 
