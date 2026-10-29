@@ -107,7 +107,12 @@
   letter-spacing: -0.025em;
   line-height: 1.1;
   margin: 0;
-  white-space: nowrap;
+}
+
+@media (min-width: 1024px) {
+  .headline {
+    white-space: nowrap;
+  }
 }
 
 .greeting {
@@ -758,7 +763,11 @@
   }
 
   .headline {
-    white-space: normal;
+    font-size: clamp(2rem, 7vw, 2.65rem);
+  }
+
+  .roleTitle {
+    font-size: 0.75rem;
   }
 
   .profileCard {
@@ -780,6 +789,39 @@
 
   .scrollCue {
     display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .profileCard {
+    padding: 1.15rem 0.85rem;
+  }
+
+  .metricItem {
+    padding: 0.65rem 0.25rem;
+  }
+
+  .metricNum {
+    font-size: 1.15rem;
+  }
+
+  .metricTxt {
+    font-size: 0.58rem;
+    letter-spacing: 0.01em;
+  }
+
+  .socialBar {
+    gap: 0.4rem;
+  }
+
+  .socialLink {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
   }
 }
 

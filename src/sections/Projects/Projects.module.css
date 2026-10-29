@@ -53,7 +53,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: var(--space-6);
 }
 
@@ -270,4 +270,15 @@
   background: rgba(255, 255, 255, 0.08);
   padding: 0.08rem 0.35rem;
   border-radius: 4px;
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .cardBody {
+    padding: 1.25rem;
+  }
 }

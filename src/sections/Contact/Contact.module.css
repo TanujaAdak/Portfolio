@@ -331,4 +331,19 @@ a.infoValue:hover {
   .formRow {
     grid-template-columns: 1fr;
   }
+
+  .formCol,
+  .infoCard {
+    padding: 1.35rem 1.15rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .socialRow {
+    flex-direction: column;
+  }
+
+  .infoItem {
+    gap: 0.65rem;
+  }
 }

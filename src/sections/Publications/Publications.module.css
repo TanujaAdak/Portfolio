@@ -183,7 +183,7 @@
 /* Certifications Grid */
 .certGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
   gap: var(--space-4);
 }
 
@@ -256,4 +256,15 @@
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   color: var(--color-text-muted);
+}
+
+@media (max-width: 640px) {
+  .certGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .pubCard {
+    padding: 1.35rem 1.15rem;
+  }
 }
