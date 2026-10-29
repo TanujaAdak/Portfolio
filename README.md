@@ -38,7 +38,7 @@
 - **PPG Signal Quality Assessment & Artifact Detection for Smartphone Monitoring**
   - *TechRxiv (IEEE-supported preprint)* | September 2025
   - Biomedical machine learning pipeline classifying PPG signal fidelity with multi-domain feature extraction and DSP filtering.
-  - Implementation: [GitHub Repository](https://github.com/Rajkamal08/PPG-Signal-Quality-Assessment)
+  - Paper: [TechRxiv Preprint](https://www.techrxiv.org/doi/full/10.36227/techrxiv.175756513.39439365/v1) | Code: [GitHub Repository](https://github.com/Rajkamal08/PPG-Signal-Quality-Assessment)
 
 ---
 

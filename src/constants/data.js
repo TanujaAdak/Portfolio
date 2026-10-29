@@ -134,7 +134,7 @@ export const publications = [
     authors: "Tanuja Adak et al.",
     abstract:
       "A clinical machine learning pipeline for assessing PPG signal quality extracted from smartphone cameras using DSP filtering techniques and statistical feature engineering.",
-    link: "https://github.com/Rajkamal08/PPG-Signal-Quality-Assessment",
+    link: "https://www.techrxiv.org/doi/full/10.36227/techrxiv.175756513.39439365/v1",
     badge: "IEEE Preprint",
     color: "#4F46E5",
   },
@@ -181,7 +181,7 @@ export const education = [
     degree: "B.Tech, Computer Science and Engineering",
     institution: "Krishna Vikas Institute of Technology, Raipur",
     duration: "2022 – 2026",
-    cgpa: "7.5/10",
+    cgpa: "7.2/10",
     icon: "🏛️",
   },
 ];

@@ -216,11 +216,11 @@ const Hero = () => {
               {/* Career Highlights */}
               <div className={styles.highlightList}>
                 <a
-                  href="https://github.com/Rajkamal08/PPG-Signal-Quality-Assessment"
+                  href="https://www.techrxiv.org/doi/full/10.36227/techrxiv.175756513.39439365/v1"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.highlightItem}
-                  title="View PPG Signal Quality Assessment on GitHub"
+                  title="View Published IEEE Preprint on TechRxiv"
                 >
                   <div className={styles.highlightIcon}>
                     <BookOpen size={16} />
@@ -249,7 +249,7 @@ const Hero = () => {
                   </div>
                   <div className={styles.highlightText}>
                     <span className={styles.highlightTitle}>B.Tech Computer Science</span>
-                    <span className={styles.highlightSub}>Krishna Vikas Institute of Tech (CGPA 7.5)</span>
+                    <span className={styles.highlightSub}>Krishna Vikas Institute of Tech (CGPA 7.2)</span>
                   </div>
                   <span className={styles.highlightBadge}>Degree</span>
                 </div>
