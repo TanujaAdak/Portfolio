@@ -146,8 +146,7 @@ const Projects = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <span className={styles.sectionLabel}>Portfolio</span>
-          <h2 className={styles.sectionTitle}>Selected <span>Projects</span></h2>
+          <h2 className={styles.sectionTitle}><span>Projects</span></h2>
           <p className={styles.sectionSubtitle}>
             End-to-end systems spanning interactive algorithm visualizers, AI mobile applications, and biomedical signal processing.
           </p>
