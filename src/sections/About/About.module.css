@@ -54,8 +54,9 @@
 /* Bento Grid */
 .bentoGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-5);
+  width: 100%;
 }
 
 /* Main Story Card: spans all 3 columns */
@@ -227,7 +228,7 @@
 /* Responsive */
 @media (max-width: 1023px) {
   .bentoGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .mainCard {
@@ -236,8 +237,12 @@
 }
 
 @media (max-width: 640px) {
+  .mainCard {
+    padding: 1.35rem 1.15rem;
+  }
+
   .featureCard {
-    padding: 1.35rem;
+    padding: 1.25rem 1rem;
   }
   
   .metaRow {

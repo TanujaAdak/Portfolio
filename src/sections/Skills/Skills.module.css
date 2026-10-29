@@ -149,11 +149,11 @@
 
 @media (max-width: 640px) {
   .grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-4);
   }
 
   .categoryCard {
-    padding: 1.25rem;
+    padding: 1.15rem 0.95rem;
   }
 }
