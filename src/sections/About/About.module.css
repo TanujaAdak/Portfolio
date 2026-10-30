@@ -237,6 +237,10 @@
 }
 
 @media (max-width: 640px) {
+  .section {
+    padding: 3rem var(--section-px);
+  }
+
   .mainCard {
     padding: 1.35rem 1.15rem;
   }

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowDown, Mail, ExternalLink, Sparkles, BookOpen, Award, Code, MapPin, Activity } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "../../components/Icons";
 import { personalInfo } from "../../constants/data";
@@ -8,9 +8,6 @@ import styles from "./Hero.module.css";
 
 const Hero = () => {
   const containerRef = useRef(null);
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 500], [0, 60]);
-  const opacity = useTransform(scrollY, [0, 450], [1, 0]);
 
   // Factual metrics with Peak Accuracy removed per request
   const metrics = [
@@ -48,7 +45,7 @@ const Hero = () => {
       <div className={styles.ambientAura} />
       <div className={styles.gridOverlay} />
 
-      <motion.div className={styles.container} style={{ y, opacity }}>
+      <div className={styles.container}>
         {/* Left Column: Narrative & Primary CTAs */}
         <div className={styles.heroContent}>
           {/* Status Badge */}
@@ -278,7 +275,7 @@ const Hero = () => {
             </div>
           </div>
         </motion.div>
-      </motion.div>
+      </div>
 
       {/* Floating Scroll Cue */}
       <motion.button
